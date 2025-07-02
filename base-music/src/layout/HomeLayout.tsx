@@ -69,7 +69,7 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
     const [bgIndex, setBgIndex] = useState(0);
     const handleChangeBg = () => setBgIndex((bgIndex + 1) % gradients.length);
     return (
-        <Box className={gradients[bgIndex]} sx={{ display: "flex", height: "100vh", color: "white" }}>
+        <Box className={gradients[bgIndex]} sx={{ display: "flex", minHeight: "100vh", color: "white" }}>
             <CssBaseline />
             <Sidebar />
             <Box className="layout-content">

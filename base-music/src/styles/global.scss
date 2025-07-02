@@ -2,6 +2,9 @@ html {
   body {
     overflow: hidden;
     font-family: "Roboto", sans-serif;
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 }
 
@@ -68,6 +71,7 @@ html {
 }
 
 .autofill-dark {
+
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
@@ -80,6 +84,7 @@ html {
 }
 
 .autofill-input {
+
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
