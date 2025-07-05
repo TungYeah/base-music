@@ -16,6 +16,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import SearchIcon from '@mui/icons-material/Search';
 import '../styles/style.scss';
 import '../styles/global.scss';
+import FooterPlayer from '../components/FooterPlayer';
 
 const navItems = [
     { text: 'Home', icon: <HomeIcon />, path: '/' },
@@ -80,11 +81,11 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
                     </div>
                     <div className="header-actions">
                         <SettingsIcon className="icon" />
+                        <span className="footer-player-divider"></span>
                         <button className="login-btn">Login</button>
                     </div>
                 </Box>
                 <Box className="page-content">{children}</Box>
-                <PlayerPlaceholder />
             </Box>
         </Box>
     );

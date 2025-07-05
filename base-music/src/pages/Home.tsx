@@ -4,6 +4,7 @@ import '../styles/global.scss';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import FooterPlayer from '../components/FooterPlayer';
 
 const fakeSongs = [
   {
@@ -120,6 +121,12 @@ const Home = () => {
   const [showRightTop, setShowRightTop] = useState(false);
   const [showLeftArtist, setShowLeftArtist] = useState(false);
   const [showRightArtist, setShowRightArtist] = useState(false);
+  const [selectedSong, setSelectedSong] = useState<{
+    cover: string;
+    title: string;
+    artist: string;
+    duration: string;
+  } | null>(null);
 
   const updateArrowVisibility = (ref: React.RefObject<HTMLDivElement>, setLeft: Function, setRight: Function) => {
     const grid = ref.current;
@@ -191,7 +198,12 @@ const Home = () => {
           )}
           <div className="song-list-grid" ref={gridRef}>
             {fakeSongs.map(song => (
-              <div className="song-card-wrapper" key={song.id}>
+              <div className="song-card-wrapper" key={song.id} onClick={() => setSelectedSong({
+                cover: song.cover,
+                title: song.title,
+                artist: song.artist,
+                duration: '4:05',
+              })}>
                 <div className="song-card">
                   <img src={song.cover} alt={song.title} className="song-cover" />
                   <div className="play-icon-overlay">
@@ -223,7 +235,12 @@ const Home = () => {
           )}
           <div className="top-list-grid" ref={topGridRef}>
             {fakeSongs.map(song => (
-              <div className="top-card-wrapper" key={song.id}>
+              <div className="top-card-wrapper" key={song.id} onClick={() => setSelectedSong({
+                cover: song.cover,
+                title: song.title,
+                artist: song.artist,
+                duration: '4:05',
+              })}>
                 <div className="top-card">
                   <img src={song.cover} alt={song.title} className="top-cover" />
                   <div className="play-icon-overlay">
@@ -275,6 +292,8 @@ const Home = () => {
           )}
         </div>
       </div>
+
+      <FooterPlayer song={selectedSong} />
 
     </div>
   );
