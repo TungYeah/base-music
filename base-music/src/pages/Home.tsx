@@ -67,18 +67,11 @@ const fakeArtist = [
     cover: '../../public/image/Sơn tùng.jpg'
   },
   {
-    id: '1',
-    artist: 'Sơn Tùng - MTP',
-    songNumber: '9 Songs',
-    favorite: '18',
-    cover: '../../public/image/Sơn tùng.jpg'
-  },
-  {
     id: '2',
-    artist: 'Sơn Tùng - MTP',
-    songNumber: '9 Songs',
+    artist: 'Jack - J97',
+    songNumber: '11 Songs',
     favorite: '18',
-    cover: '../../public/image/Sơn tùng.jpg'
+    cover: '../../public/image/jack-va-thien-an-5805.jpeg'
   },
   {
     id: '3',
@@ -103,6 +96,13 @@ const fakeArtist = [
   },
   {
     id: '6',
+    artist: 'Sơn Tùng - MTP',
+    songNumber: '9 Songs',
+    favorite: '18',
+    cover: '../../public/image/Sơn tùng.jpg'
+  },
+  {
+    id: '7',
     artist: 'Sơn Tùng - MTP',
     songNumber: '9 Songs',
     favorite: '18',

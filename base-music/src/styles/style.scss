@@ -167,6 +167,8 @@ select:focus {
   width: 100%;
   border-left: none;
   box-shadow: none;
+  position: relative;
+  z-index: 2000;
 
   .search-bar {
     flex: 1;
@@ -469,7 +471,6 @@ select:focus {
   display: flex;
   flex-direction: column;
   background: transparent;
-  cursor: pointer;
   border-radius: 0;
   box-sizing: border-box;
   overflow: hidden;
@@ -489,8 +490,6 @@ select:focus {
   background: transparent;
   color: white;
   border-radius: 0;
-  box-shadow: 0 4px 16px #0008;
-  padding: 8px;
   text-align: left;
   display: flex;
   flex-direction: column;

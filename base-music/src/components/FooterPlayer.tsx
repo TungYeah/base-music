@@ -13,15 +13,14 @@ import ReplyIcon from '@mui/icons-material/Reply';
 import PlaylistPanel from './PlaylistPanel';
 import '../styles/style.scss';
 
-interface FooterPlayerProps {
-    song: {
+type FooterPlayerProps = {
+    song?: {
         cover: string;
         title: string;
         artist: string;
         duration: string;
     } | null;
-}
-
+};
 const FooterPlayer: React.FC<FooterPlayerProps> = ({ song }) => {
     const [showPlaylist, setShowPlaylist] = useState(false);
     if (!song) return null;
