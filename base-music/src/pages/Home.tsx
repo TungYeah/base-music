@@ -1,10 +1,12 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import '../styles/style.scss';
 import '../styles/global.scss';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import FooterPlayer from '../components/FooterPlayer';
+import FooterPlayer from '../layout/FooterPlayer';
+import { updateArrowVisibility, scrollByCard } from '../utils/sliderUtils';
+import { useSliderArrows } from '../hooks/useSliderArrows';
 
 const fakeSongs = [
   {
@@ -128,62 +130,11 @@ const Home = () => {
     duration: string;
   } | null>(null);
 
-  const updateArrowVisibility = (ref: React.RefObject<HTMLDivElement>, setLeft: Function, setRight: Function) => {
-    const grid = ref.current;
-    if (grid) {
-      const atStart = Math.round(grid.scrollLeft) <= 0;
-      const atEnd = Math.round(grid.scrollLeft + grid.clientWidth) >= Math.round(grid.scrollWidth);
-      setLeft(!atStart);
-      setRight(!atEnd);
-    }
-  };
-
-  useEffect(() => {
-    const grid = gridRef.current;
-    const topGrid = topGridRef.current;
-    const artistGrid = artistGridRef.current;
-
-    updateArrowVisibility(gridRef, setShowLeft, setShowRight);
-    updateArrowVisibility(topGridRef, setShowLeftTop, setShowRightTop);
-    updateArrowVisibility(artistGridRef, setShowLeftArtist, setShowRightArtist);
-
-    const handleScroll = () => {
-      updateArrowVisibility(gridRef, setShowLeft, setShowRight);
-      updateArrowVisibility(topGridRef, setShowLeftTop, setShowRightTop);
-      updateArrowVisibility(artistGridRef, setShowLeftArtist, setShowRightArtist);
-    };
-
-    grid?.addEventListener('scroll', handleScroll);
-    topGrid?.addEventListener('scroll', handleScroll);
-    artistGrid?.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
-
-    return () => {
-      grid?.removeEventListener('scroll', handleScroll);
-      topGrid?.removeEventListener('scroll', handleScroll);
-      artistGrid?.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
-    };
-  }, []);
-
-  const scrollByCard = (
-    ref: React.RefObject<HTMLDivElement>,
-    direction: 'left' | 'right',
-    cardSelector: string
-  ) => {
-    const grid = ref.current;
-    if (grid) {
-      const card = grid.querySelector(cardSelector) as HTMLElement;
-      if (!card) return;
-      const style = window.getComputedStyle(grid);
-      const gap = parseInt(style.gap || '0', 10);
-      const scrollAmount = card.offsetWidth + gap;
-      grid.scrollBy({
-        left: direction === 'right' ? scrollAmount : -scrollAmount,
-        behavior: 'smooth'
-      });
-    }
-  };
+  useSliderArrows(
+    gridRef, setShowLeft, setShowRight,
+    topGridRef, setShowLeftTop, setShowRightTop,
+    artistGridRef, setShowLeftArtist, setShowRightArtist
+  );
 
   return (
     <div className="home-container">

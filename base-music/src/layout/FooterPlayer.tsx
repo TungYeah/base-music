@@ -10,7 +10,7 @@ import QueueMusicIcon from '@mui/icons-material/QueueMusic';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddIcon from '@mui/icons-material/Add';
 import ReplyIcon from '@mui/icons-material/Reply';
-import PlaylistPanel from './PlaylistPanel';
+import PlaylistPanel from '../components/PlaylistPanel';
 import '../styles/style.scss';
 
 type FooterPlayerProps = {
